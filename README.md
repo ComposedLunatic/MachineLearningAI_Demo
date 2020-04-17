@@ -32,6 +32,7 @@ The AI has 3 actions that it can take: move up, move down and don't move (do not
 ## Acknowledgments
 
 * **W3Schools** - Game example code from w3chools:
-    [Game Demo page](https://www.w3schools.com/graphics/game_intro.asp),s 
-    [Code Demo page](https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity)
+    [Game Demo page](https://www.w3schools.com/graphics/game_intro.asp)
+
+    , [Code Demo page](https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity)
 

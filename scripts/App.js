@@ -78,8 +78,6 @@ export default class App{
         GameView.frameNo += 1;
         if (GameView.frameNo == 1 || this.everyinterval(150)) {
             GameView.createNewObstacles(Obstacles);
-            // Updateing the training data to improve AI
-            AI.getState(GamePiece, Obstacles, true);
         }
         for (let i = 0; i < Obstacles.length; i += 1) {
             Obstacles[i].x += -1;
@@ -87,7 +85,7 @@ export default class App{
         }
         Score.text="SCORE: " + GameView.frameNo;
         Score.update(GameView.context);
-        AI.getState(GamePiece, Obstacles)
+        AI.getState(GamePiece, Obstacles, GamePiece.doAddData)
         GamePiece.doNewAction(AI)
         GamePiece.newPos(GameView);
         GamePiece.update(GameView.context);

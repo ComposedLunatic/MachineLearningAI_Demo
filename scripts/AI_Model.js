@@ -3,7 +3,6 @@
 'use strict'
 // import nFetch from "./node-fetch"
 import TrainingData from "./TrainingData.js"
-const _BUFFER = 2;
 
 export default class AIModel{
     constructor() {
@@ -12,17 +11,20 @@ export default class AIModel{
 
         // Data for model to train/predict
         this.normState = []; 
+        this.learnRate = 200;
+        this.framesPassed = 0;
 
         this.trainingData = new TrainingData();
+
     }
 
     createModel() {  
         // Add a single hidden layer
-        // Takes in [lastAction, Distance from wall, distance from gap, and if the AI is in the gap]
+        // Takes in [Distance from wall, distance from the top of the gap, distance from the top of the gap, and if the AI is in the gap]
         this.AIModel.add(tf.layers.dense({
             inputShape: [4],
             activation: 'sigmoid',
-            units: 6,
+            units: 8,
             shuffle: true,
             useBias: true
         }));
@@ -30,7 +32,7 @@ export default class AIModel{
         // Add an output layer
         // Returns [up, down, and nothing] (0-1) values to determine action
         this.AIModel.add(tf.layers.dense({
-            inputShape: [6],
+            inputShape: [8],
             units: 3, 
             useBias: true
         }));
@@ -75,20 +77,23 @@ export default class AIModel{
         });
     }
 
-    getState(AI, obstacleList, updateTData = false) {
+    getState(AI, obstacleList) {
         // Get distance from gap, if the AI is in the gap, and the desired output
-       let stateValues = AI.calcStateValues(obstacleList, _BUFFER)
+       let stateValues = AI.calcStateValues(obstacleList)
 
         // Normilize and store data
-        this.normState = this.trainingData.normalizeState( 
-            [stateValues.lastAction,
+        this.normState = this.trainingData.normalizeState([
             stateValues.distFromWall,
-            stateValues.distFromGap,
-            stateValues.isInGap] );
+            stateValues.distAboveGap,
+            stateValues.distBelowGap,
+            stateValues.isInGap
+        ]);
 
+        this.framesPassed++
         // Updating the TrainingData so AIModel has more to learn from
-        if (updateTData) {
+        if (this.framesPassed > this.learnRate) {
             this.trainingData.addNewData( this.normState, stateValues.desiredOutput );
+            this.framesPassed = 0;
         }
     }    
 }

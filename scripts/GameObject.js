@@ -24,7 +24,6 @@ export default class component{
         this.playerSpeed = 0;
         this.lastAction = 3;
         this.hasCrashed = false;
-
     }
 
     // Update method
@@ -103,23 +102,25 @@ export default class component{
         }        
     }
 
-    calcStateValues(obstacleList, _BUFFER) {
+    calcStateValues(obstacleList) {
         // Get the x value for first wall
         let curObstacal = 0;
         let distFromWall = obstacleList[curObstacal].x - (this.x + this.width);
+        if (distFromWall < 0){ distFromWall = 0; }
 
-        let distFromGap = 0;
+        let distAboveGap = 0;
+        let distBelowGap = 0;
         let isInGap = false;
         let desiredOutput = [];
 
          // If value is negative, take this value, Player moves up
-        if ((((obstacleList[curObstacal + 1].y) - (this.y + this.height)) < -_BUFFER)){
-            distFromGap = (Math.round((obstacleList[curObstacal + 1].y) - (this.y + this.height)));
+        if ((((obstacleList[curObstacal + 1].y) - (this.y + this.height)) < 0)){
+            distBelowGap = (Math.round((obstacleList[curObstacal + 1].y) - (this.y + this.height)) * -1);
             desiredOutput = [1, 0, 0];
         }
         // If value is positive, take this value, Player moves down
-        else if ((((obstacleList[curObstacal].height) - this.y) >  _BUFFER)){
-            distFromGap = Math.round((obstacleList[curObstacal].height) - this.y);
+        else if ((((obstacleList[curObstacal].height) - this.y) > 0)){
+            distAboveGap = Math.round((obstacleList[curObstacal].height) - this.y);
             desiredOutput = [0, 1, 0];
         }
         // Otherwise Player is in the gap
@@ -129,9 +130,9 @@ export default class component{
         }
 
         return {
-            lastAction: this.lastAction,
             distFromWall: distFromWall,
-            distFromGap: distFromGap,
+            distAboveGap: distAboveGap,
+            distBelowGap: distBelowGap,
             isInGap: isInGap,
             desiredOutput: desiredOutput
         }

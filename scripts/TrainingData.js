@@ -11,17 +11,14 @@ export default class TrainingData {
 
     normalizeState( curState ) {
         let newState = [];
-        // Each index has a differnet min/max
-        
-        // last state 1-3
-        newState.push( (curState[0] - 1)/(3 - 1) );
-
+        // Normalizing values to increase accuracy of model
+        // Formula I'm using is x = (CurrentValue - MinValue)/(MaxVal - MinVal)
         // Distance form wall 0-439
-        newState.push( curState[1]/439 );
-        
-        // Distance from gap -200-250
-        newState.push( (curState[2] - (-200))/(250 - (-200)) );
-
+        newState.push( curState[0]/439 );
+        // Distance above Gap 0 - 200
+        newState.push( (curState[1]/200) );
+        // Distance below Gap 0 - 200
+        newState.push( (curState[2]/200) );
         // Don't have to normalize since its either 1 or 0
         newState.push( curState[3] );
 
@@ -32,5 +29,4 @@ export default class TrainingData {
         this.inputs.push( normState )
         this.labels.push( desiredOutput )
     }
-
 }

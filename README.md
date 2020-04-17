@@ -23,8 +23,7 @@ A simple Flappy Bird-esque game that uses Tensorflow.js to learn and get better 
 
 ## How it works
  
-The AI has 3 actions that it can take: move up, move down and don't move (do nothing). It decides on which action to take by taking into account the last action taken, the AI's distance from the wall, the AI's distance from the gap and
-if the AI is currently in the gap. Everytime the AI wants to move it takes in all this information and uses the AI Model to predict the best action it should take. The AI model gets updated at the end of every run, the data to update the model is gathered everytime an obstacle is spawned and when the AI crashes. On average the AI gets "good" at the game around the 60 run mark.
+The AI has 3 actions that it can take: move up, move down and don't move (do nothing). It decides on which action to take by taking into account the AI's distance from the wall, the AI's distance from the top of the gap, the AI's distance from the bottom of the gap, and if the AI is currently in the gap. Everytime the AI wants to move it takes in all this information and uses the AI Model to predict the best action it should take. The AI model gets updated at the end of every run, the data to update the model is gathered everytime an obstacle is spawned and when the AI crashes. On average the AI gets "good" at the game around 20-30 runs.
 
 ## Authors
 

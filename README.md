@@ -28,7 +28,7 @@ if the AI is currently in the gap. Everytime the AI wants to move it takes in al
 
 ## Authors
 
-* **Shawn Hodgson** - *Initial work* - [PurpleBooth](https://github.com/PurpleBooth)
+* **Shawn Hodgson** - *Initial work* - [My github](https://github.com/ComposedLunatic)
 
 ## Acknowledgments
 

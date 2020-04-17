@@ -1,0 +1,28 @@
+<!-- Copyright(C) 2020 Shawn Hodgson
+     Flappy Bird example code from w3chools
+     https://www.w3schools.com/graphics/game_intro.asp 
+     https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity  -->
+
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <link rel="stylesheet" href="./css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.0.0/dist/tf.min.js"></script>
+    </head>
+    <body>
+        <div id="run-log"></div>
+        <div id="highscore"></div>
+        <div>Use the Slider to change the game speed</div>
+        <div>
+            <span>Faster<input type="range" name="Game Speed" id="game-speed" value="" placeholder="5" min="1" max="10">Slower</span>
+        </div>
+        <input type="button" value="Pause" id="pause-btn">
+        <p>This demo is using a modified version of the w3schools demo game found here:</p>
+        <a href="https://www.w3schools.com/graphics/game_intro.asp">HTML Game Example</a>
+        <br>
+        <a href="https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity">Try it ourself Code</a>
+        <p>The focus of this demo it to show off the use off Tensorflow.js, and how it can be used in a gaming environment</p>
+        <script type="module" src="main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,19 @@
+{
+  "name": "flappyberb_demo",
+  "version": "1.0.0",
+  "description": "Demo to show off machine learning",
+  "main": "main.js",
+  "scripts": {
+    "serve": "nodemon -r esm server.js",
+    "debug": "nodemon --inspect -r esm server.js"
+  },
+  "author": "Shawn Hodgson",
+  "license": "MIT",
+  "dependencies": {
+    "esm": "^3.2.25",
+    "express": "^4.17.1",
+    "fs": "0.0.1-security",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.2"
+  }
+}

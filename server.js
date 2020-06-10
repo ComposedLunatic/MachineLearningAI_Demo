@@ -1,4 +1,4 @@
-// Copyrght (C) 2020 Shawn Hodgson
+// Copyright(C) 2020 Shawn Hodgson All Rights Reserved
 
 import Express from 'express';
 import Path from 'path';

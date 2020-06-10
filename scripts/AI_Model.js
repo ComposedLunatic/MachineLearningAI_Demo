@@ -1,4 +1,4 @@
-// Copyright(C) 2020 Shawn Hodgson
+// Copyright(C) 2020 Shawn Hodgson All Rights Reserved
 
 'use strict'
 // import nFetch from "./node-fetch"
@@ -60,15 +60,15 @@ export default class AIModel{
 
             predictionData.then((result) => {
                 // move up
-                if(result[0] > result[1] && result[0] > result[2]) {
+                if (result[0] > result[1] && result[0] > result[2]) {
                     action = 1;
                 }
                 // move down
-                else if(result[1] > result[0] && result[1] > result[2]) {
+                else if (result[1] > result[0] && result[1] > result[2]) {
                     action = 2;
                 }
                 // stay in place
-                else if(result[2] > result[0] && result[2] > result[1]) {
+                else if (result[2] > result[0] && result[2] > result[1]) {
                     action = 3;
                 }
 

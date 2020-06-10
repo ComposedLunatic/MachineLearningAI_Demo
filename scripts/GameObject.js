@@ -1,4 +1,4 @@
-// Copyright(C) 2020 Shawn Hodgson
+// Copyright(C) 2020 Shawn Hodgson All Rights Reserved
 // Game example code from w3chools
 // https://www.w3schools.com/graphics/game_intro.asp 
 // https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity
@@ -33,7 +33,8 @@ export default class component{
             ctx.font = this.width + " " + this.height;
             ctx.fillStyle = this.color;
             ctx.fillText(this.text, this.x, this.y);
-        } else {
+        } 
+        else {
             ctx.fillStyle = this.color;
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }

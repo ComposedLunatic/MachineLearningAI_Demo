@@ -1,4 +1,4 @@
-<!-- Copyright(C) 2020 Shawn Hodgson
+<!-- Copyright(C) 2020 Shawn Hodgson All Rights Reserved
      Flappy Bird example code from w3chools
      https://www.w3schools.com/graphics/game_intro.asp 
      https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity  -->
@@ -17,7 +17,15 @@
         <div>
             <span>Faster<input type="range" name="Game Speed" id="game-speed" value="" placeholder="5" min="1" max="10">Slower</span>
         </div>
+        <br>
+        <div>Use the Slider to change the rate that the AI learns</div>
+        <div>The learn rate determines how many frames pass before the AI adds the current state to it's next update</div>
+        <div>**Warning: Low learn rates may cause the game to slow down**</div>
+        <div>
+            <span>Learn Rate<input type="range" name="Learn Rate" id="learn-rate" value="" placeholder="200" min="100" max="500"><span id="rate-value"></span></span>
+        </div>
         <input type="button" value="Pause" id="pause-btn">
+        <input type="button" value="Restart" id="restart-btn">
         <p>This demo is using a modified version of the w3schools demo game found here:</p>
         <a href="https://www.w3schools.com/graphics/game_intro.asp">HTML Game Example</a>
         <br>

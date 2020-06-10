@@ -1,4 +1,4 @@
-// Copyright(C) 2020 Shawn Hodgson
+// Copyright(C) 2020 Shawn Hodgson All Rights Reserved
 // Game example code from w3chools
 // https://www.w3schools.com/graphics/game_intro.asp 
 // https://www.w3schools.com/graphics/tryit.asp?filename=trygame_default_gravity
@@ -21,7 +21,7 @@ export default class App{
     }
 
     init() {
-        if(this.firstTime) {
+        if (this.firstTime) {
             // Only initialize these once
             this.Score = new GameObject("30px", "Consolas", "black", 280, 40, "text");
             this.GameView = new GameArea();
@@ -49,9 +49,17 @@ export default class App{
             this.updateGameSpeed();
         });
 
+        document.querySelector("#learn-rate").addEventListener("change", event =>{
+            this.AI.learnRate = document.querySelector("#learn-rate").value;
+            document.querySelector("#rate-value").innerHTML = `: ${this.AI.learnRate}`
+        });
+
+        document.querySelector("#restart-btn").addEventListener("click", event =>{
+            this.restartGame();
+        });
         document.querySelector("#pause-btn").addEventListener("click", event =>{
             clearInterval(this.Interval);
-            if(this.isPaused) {
+            if (this.isPaused) {
                 this.Interval = setInterval( () => {
                     this.update( this.GamePiece, this.GameView, this.Obstacles, this.Score, this.AI )
                 }, this.gameSpeed);
@@ -65,7 +73,7 @@ export default class App{
     //Game Update 
     update( GamePiece, GameView, Obstacles, Score, AI ) {    
         for (let i = 0; i < Obstacles.length; i += 1) {
-            if(Obstacles[i].x <= -10){
+            if (Obstacles[i].x <= -10){
                 Obstacles.shift();
             }
             if (GamePiece.crashWith(Obstacles[i])) {
@@ -85,14 +93,14 @@ export default class App{
         }
         Score.text="SCORE: " + GameView.frameNo;
         Score.update(GameView.context);
-        AI.getState(GamePiece, Obstacles, GamePiece.doAddData)
+        AI.getState(GamePiece, Obstacles)
         GamePiece.doNewAction(AI)
         GamePiece.newPos(GameView);
         GamePiece.update(GameView.context);
     }
 
     updateGameSpeed() {
-        if(!this.GamePiece.hasCrashed) {
+        if (!this.GamePiece.hasCrashed) {
             this.gameSpeed = document.querySelector("#game-speed").value;
             clearInterval(this.Interval)
     
@@ -106,6 +114,7 @@ export default class App{
         if (this.GameView.frameNo > this.highScore) { this.highScore = this.GameView.frameNo; }
         document.querySelector("#highscore").innerHTML = `Highscore: ${this.highScore}`;
         document.querySelector("#run-log").innerHTML = `Run Number: ${this.AIRun}`
+        document.querySelector("#rate-value").innerHTML = `: ${this.AI.learnRate}`
     }
 
     restartGame() {
